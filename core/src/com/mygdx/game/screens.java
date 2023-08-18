@@ -1,7 +1,11 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -34,15 +38,50 @@ public abstract class screens extends InputAdapter implements Screen {
      oCamBox20.position.set(WORLD_WIDTH/2f,WORLD_HEIGHT/2f,0);
 
 
+     InputMultiplexer input = new InputMultiplexer(this,stage);
+     Gdx.input.setInputProcessor(input);
+
+     SpriteBatch = new com.badlogic.gdx.graphics.g2d.SpriteBatch();
+
+
+
+
+   }
+   @Override
+   public void render (float delta) {
+
+      update(delta);
+      stage.act(delta);
+
+      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+      draw(delta);
+
+      stage.draw();
 
 
    }
 
+   public abstract void draw(float delte); 
 
+   public abstract void update (float delte);
 
-   
-      
+   @Override
+   public void resize(int width,int height){
+      stage.getViewport().update(width, height, true);
 
+   }
+
+   @Override
+   public boolean keyDown(int keycode){
+      if(keycode == Input.Keys.ESCAPE || keycode == Input.Keys.BACK ){
+         //Si estoy estoy en el menu principal salgo de la app
+         //Si estoy dentro de un tutorial regreso al menu principal
+         // TODO: Implement loter
+
+      }
+      return super.keyDown(keycode);
+   }
 
 
 
