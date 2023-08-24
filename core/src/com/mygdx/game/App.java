@@ -6,11 +6,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class App extends ApplicationAdapter {
+
+
+
+
+
+
+
+	private void setScreen(Menu menu) {
+	}
+
+
+
+
+
+
 	SpriteBatch batch;
 	Texture img;
 	
 	@Override
 	public void create () {
+		setScreen(new Menu(this));
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 	}
