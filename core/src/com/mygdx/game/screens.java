@@ -75,9 +75,14 @@ public abstract class screens extends InputAdapter implements Screen {
    @Override
    public boolean keyDown(int keycode){
       if(keycode == Input.Keys.ESCAPE || keycode == Input.Keys.BACK ){
-         //Si estoy estoy en el menu principal salgo de la app
-         //Si estoy dentro de un tutorial regreso al menu principal
-         // TODO: Implement loter
+
+         if(this instanceof Menu){
+          Gdx.app.exit(); 
+
+         }else{
+            game.setScreen(new Menu(game));
+         }
+        
 
       }
       return super.keyDown(keycode);

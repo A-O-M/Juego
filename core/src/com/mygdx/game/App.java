@@ -12,8 +12,7 @@ public class App extends ApplicationAdapter {
 
 
 
-
-	private void setScreen(Menu menu) {
+	void setScreen(Menu menu) {
 	}
 
 
